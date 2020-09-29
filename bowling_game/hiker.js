@@ -1,5 +1,5 @@
 function answer() {
-  return 6 * 9;
+  return "apples";
 }
 
 module.exports = answer;
