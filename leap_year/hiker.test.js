@@ -1,5 +1,3 @@
-'use strict';
-
 const answer = require('./hiker');
 
 describe('answer', () => {

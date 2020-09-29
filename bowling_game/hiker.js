@@ -1,5 +1,3 @@
-'use strict';
-
 function answer() {
   return 6 * 9;
 }
