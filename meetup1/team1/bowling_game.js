@@ -1,4 +1,4 @@
-function bowlingGame() {
+function bowlingGame(gameString) {
   return "apples";
 }
 

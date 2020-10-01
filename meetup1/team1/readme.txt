@@ -56,3 +56,7 @@ Total score == 10 frames x 15 == 150
 
 X|7/|9-|X|-8|8/|-6|X|X|X||81
 Total score == 167
+
+
+extract each frame
+get array of frames
