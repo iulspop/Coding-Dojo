@@ -2,4 +2,8 @@ function bowlingGame(gameString) {
   return "apples";
 }
 
-module.exports = bowlingGame;
+function getFrames(str) {
+  return str.split('|').filter(s =>  s !== "")
+}
+
+module.exports = {bowlingGame, getFrames};
