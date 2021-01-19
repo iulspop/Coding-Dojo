@@ -3,6 +3,23 @@ Write a program to score a game of Ten-Pin Bowling.
 Input: string (described below) representing a bowling game
 Output: integer score
 
+req
+-line
+-frame
+  - one or two tries
+  - X strike
+  - / spare
+  - - miss
+  - | frame boundary
+  - || bonus balls
+  - last frame
+    if stike, two bonus ball
+    if spare, one bonus ball
+-score
+  - if stike, ten plus next two balls
+  - if spare, ten plus next ball
+  - if total number of pins knocked down
+
 The scoring rules:
 
 Each game, or "line" of bowling, includes ten turns, or "frames" for the bowler.
@@ -54,5 +71,57 @@ Score for each frame == 10 + score for next one
 ball == 10 + 5 == 15
 Total score == 10 frames x 15 == 150
 
+10
+7
+3
+10
+9
+9
+10
+8
+8
+10
+6
+10
+10
+10
+10
+10
+8
+10
+8
+1
+
 X|7/|9-|X|-8|8/|-6|X|X|X||81
 Total score == 167
+
+scoreTally = 0
+frames ["X", "7/", "9-"]
+  if X
+    add 10
+    add 2 bonus balls
+      the next frame
+        if X
+          add 10
+          next frame
+            add first ball
+              if X, add 10
+              if num, add num
+        else
+          add first ball
+            if num, add num
+          add second ball
+            if num, add num
+            if /, add 10 - first ball num
+  if /
+    add 10
+    add 1 bonus ball
+      the next frame
+      the first character score value
+  else
+    count the numbers
+    get matches for digits
+    convert to integers "Number(string)
+    sum
+    increment score
+bonus balls "81"

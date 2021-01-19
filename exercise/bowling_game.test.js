@@ -1,7 +1,7 @@
 const bowlingGame = require('./bowling_game');
 
 describe('bowlingGame', () => {
-  it('to life the universe and everything', () => {
-    expect(bowlingGame()).toEqual(42);
+  it('calculates score for line with numbers', () => {
+    expect(bowlingGame("9-|9-|9-|9-|9-|9-|9-|9-|9-|72||")).toEqual(90);
   });
 });
