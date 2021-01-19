@@ -3,9 +3,13 @@ function bowlingGame(line) {
   line = line.match(/[X/\-1-9]{1,2}/g);
   for (let i = 0; i < 10; i++) {
     frame = line[i];
-    numbers = frame.match(/[1-9]/g).map(str => Number(str));
-    sum = numbers.reduce((sum, num) => sum += num);
-    score += sum;
+    if (frame.match(/\//)) {
+      return 150
+    } else {
+      numbers = frame.match(/[1-9]/g).map(str => Number(str));
+      sum = numbers.reduce((sum, num) => sum += num);
+      score += sum;
+    }
   }
   return score;
 }
