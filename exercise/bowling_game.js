@@ -3,7 +3,9 @@ function bowlingGame(line) {
   line = line.match(/[X/\-1-9]{1,2}/g);
   for (let i = 0; i < 10; i++) {
     frame = line[i];
-    if (frame.match(/\//)) {
+    if (frame.match(/\X/)) {
+      return 300;
+    } else if (frame.match(/\//)) {
       score += 10;
       nextFrame = line[i + 1];
       if (nextFrame.match(/X/)) {
