@@ -6,6 +6,6 @@ describe('bowlingGame', () => {
   });
 
    it('calculates score for line with spares', () => {
-    expect(bowlingGame("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")).toEqual(150);
+    expect(bowlingGame("5/|5/|5/|5/|5/|5-|5/|5/|5/|-/||5")).toEqual(135);
   });
 });
