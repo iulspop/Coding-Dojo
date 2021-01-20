@@ -4,19 +4,45 @@ function bowlingGame(line) {
   for (let i = 0; i < 10; i++) {
     frame = line[i];
     if (frame.match(/\X/)) {
-      return 300;
+      score += 10;
+      let nextFrame = line[i + 1];
+      if (i == 9) {
+        continue
+      }
+      if (nextFrame.match(/X/)) {
+        score += 10;
+        let nextFrame2 = line[i + 2];
+        if (nextFrame2.match(/X/)) {
+          score += 10;
+        } else if (nextFrame2.match(/^[1-9]/)) {
+          let number = nextFrame2.match(/^[1-9]/).map(str => Number(str))[0];
+          score += number;
+        }
+      } else {
+        let firstNumber = 0;
+        if (nextFrame.match(/^[1-9]/)) {
+          firstNumber = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
+          score += number;
+        }
+        if (nextFrame.match(/[1-9]$/)) {
+          let number = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
+          score += number;
+        } else if (frame.match(/\//)) {
+          score += (10 - firstNumber);
+        }
+      }
     } else if (frame.match(/\//)) {
       score += 10;
-      nextFrame = line[i + 1];
+      let nextFrame = line[i + 1];
       if (nextFrame.match(/X/)) {
         score += 10;
       } else if (nextFrame.match(/^[1-9]/)) {
-        number = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
+        let number = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
         score += number;
       }
     } else {
-      numbers = frame.match(/[1-9]/g).map(str => Number(str));
-      sum = numbers.reduce((sum, num) => sum += num);
+      let numbers = frame.match(/[1-9]/g).map(str => Number(str));
+      let sum = numbers.reduce((sum, num) => sum += num);
       score += sum;
     }
   }
