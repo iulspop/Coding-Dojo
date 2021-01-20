@@ -6,7 +6,23 @@ function bowlingGame(line) {
     if (frame.match(/\X/)) {
       score += 10;
       let nextFrame = line[i + 1];
-      if (i == 9) {
+      lastFrameIndex = 9;
+      if (i == lastFrameIndex) {
+        if (nextFrame.match(/X/)) {
+          let strikeScore = nextFrame.match(/X/g).map(str => 10);
+          let sum = strikeScore.reduce((sum, num) => sum += num);
+          score += sum;
+        }
+        if (nextFrame.match(/^[1-9]/)) {
+          firstNumber = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
+          score += firstNumber;
+        }
+        if (nextFrame.match(/[1-9]$/)) {
+          let number = nextFrame.match(/[1-9]$/).map(str => Number(str))[0];
+          score += number;
+        } else if (frame.match(/\//)) {
+          score += (10 - firstNumber);
+        }
         continue
       }
       if (nextFrame.match(/X/)) {
@@ -22,10 +38,10 @@ function bowlingGame(line) {
         let firstNumber = 0;
         if (nextFrame.match(/^[1-9]/)) {
           firstNumber = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
-          score += number;
+          score += firstNumber;
         }
         if (nextFrame.match(/[1-9]$/)) {
-          let number = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
+          let number = nextFrame.match(/[1-9]$/).map(str => Number(str))[0];
           score += number;
         } else if (frame.match(/\//)) {
           score += (10 - firstNumber);
@@ -40,7 +56,7 @@ function bowlingGame(line) {
         let number = nextFrame.match(/^[1-9]/).map(str => Number(str))[0];
         score += number;
       }
-    } else {
+    } else if (frame.match(/[1-9]/)) {
       let numbers = frame.match(/[1-9]/g).map(str => Number(str));
       let sum = numbers.reduce((sum, num) => sum += num);
       score += sum;
